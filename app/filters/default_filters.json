@@ -1,0 +1,24 @@
+{
+  "filters": {
+    "ambito_mensile": [
+      "Esercizi alberghieri",
+      "Esercizi extralberghieri",
+      "Trento, Monte Bondone e Altopiano di Pinè",
+      "Altopiano della Paganella, Piana della Rotaliana e San Lorenzo Dorsino",
+      "Val di Fiemme e Val di Cembra",
+      "Val di Fassa",
+      "San Martino di Castrozza, Primiero e Vanoi",
+      "Valsugana, Tesino e Valle dei Mocheni",
+      "Altipiani cimbri e Vigolana",
+      "Rovereto, Vallagarina e Monte Baldo",
+      "Garda trentino, Valle di Ledro, Terme di Comano e Valle dei Laghi",
+      "Madonna di Campiglio, Pinzolo, Val Rendena, Giudicarie centrali e Valle del Chiese",
+      "Val di Sole",
+      "Val di Non"
+    ],
+    "target": ["Stranieri", "Italiani"],
+    "metrica": ["Presenze", "Arrivi"],
+    "periodo_dati": ["2013-01", "2024-12"],
+    "periodo_previsione": "Mensile"
+  }
+}
