@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test Dashboard Turismo 2023-2030</title>
+    <title>Dashboard Turismo Trentino</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
@@ -13,15 +13,16 @@
   </head>
   <body>
     <div class="app-container" id="appContainer">
+      
       <aside class="sidebar-left collapsed" id="sidebarLeftFilter">
         <div class="sidebar-header">
                 <div class="brand-title">
                     <div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div>
                     TRENTINO DATA
                 </div>
-                </div>
-            
-            <div class="sidebar-content" id="filtersContainer">
+        </div> 
+        <div class="sidebar-content" id="filtersContainer">
+            </div>
       </aside>
 
       <aside class="sidebar-left collapsed" id="sidebarLeftGenerate">
@@ -33,7 +34,8 @@
               </svg>
             </div>
             TRENTINO FORECAST
-          
+          </div>
+        </div>
         <div class="sidebar-content">
           </div>
       </aside>
@@ -53,8 +55,8 @@
                 <line x1="4" y1="18" x2="20" y2="18"></line>
               </svg>
             </button>
-            
             </div>
+          
           <div class="header-center">TourismForecast</div>
 
           <div style="display: flex; gap: 10px; align-items: center">
@@ -80,9 +82,7 @@
               </div>
               <div class="theme-icon moon">
                 <svg class="icon" style="width: 16px" viewBox="0 0 24 24">
-                  <path
-                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                  ></path>
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
               </div>
             </div>
@@ -121,16 +121,14 @@
 
             <div class="mode-controls">
                 <button class="mode-btn active" id="btnHistory" onclick="aggiornaTimeFilter('history')">Storico</button>
-                </div>
+            </div>
         </div>
       </main>
 
       <aside class="sidebar-right collapsed" id="sidebarRight">
         <div class="resizer resizer-right" id="resizerRight"></div>
         <div class="sidebar-header" style="justify-content: center">
-          <span class="brand-title" style="color: var(--text-primary)"
-            >GUIDA RAPIDA</span
-          >
+          <span class="brand-title" style="color: var(--text-primary)">GUIDA RAPIDA</span>
         </div>
         
         <div class="info-container">
@@ -141,38 +139,23 @@
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                 </svg>
               </div>
-              How To Use
+              Come Funziona
             </div>
             
             <div class="info-text">
               Benvenuto nella dashboard del turismo in Trentino.
-              Visualizza gli anni che più ti interessano. 
-              Buon divertimento!!
             </div>
 
             <ul class="step-list">
               <li>
-                <strong>Filtra:</strong> Usa il pannello sinistro per
-                selezionare ambito, tipologia e origine.
-                
+                <strong>Filtra:</strong> Usa il pannello sinistro per selezionare ambito, tipologia e origine.
               </li>
               <li>
-                <strong>Anni:</strong> Seleziona manualmente gli anni 
-                dal 2013 al 2024. Arrivi (numero turisti arrivati) e
-                Presenze (giorni di pernottamento).
-          
-
+                <strong>Anni:</strong> Seleziona manualmente gli anni o usa i range rapidi.
               </li>
               <li>
                 <strong>Modalità:</strong>
-                <div
-                  style="
-                    margin-top: 4px;
-                    padding-left: 8px;
-                    font-size: 0.85rem;
-                    color: var(--text-tertiary);
-                  "
-                >
+                <div style="margin-top: 4px; padding-left: 8px; font-size: 0.85rem; color: var(--text-tertiary);">
                   • Storico: Dati consolidati fino al 2024.<br />
                 </div>
               </li>
@@ -185,4 +168,5 @@
   <script src="{{ url_for('static', filename='dati_default.js') }}"></script>
   <script src="{{ url_for('static', filename='filtra.js') }}"></script>
   <script src="{{ url_for('static', filename='generazione.js') }}"></script>
-  <script src="{{ url_for('static', filename='script.js') }}"></script></html>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</html>
