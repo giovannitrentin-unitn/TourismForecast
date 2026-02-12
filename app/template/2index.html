@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Dashboard Turismo 2023-2030</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <div class="app-container" id="appContainer">
+      <aside class="sidebar-left collapsed" id="sidebarLeftFilter">
+        <div class="sidebar-header">
+                <div class="brand-title">
+                    <div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div>
+                    TRENTINO DATA
+                </div>
+                </div>
+            
+            <div class="sidebar-content" id="filtersContainer">
+      </aside>
+
+      <aside class="sidebar-left collapsed" id="sidebarLeftGenerate">
+        <div class="sidebar-header">
+          <div class="brand-title">
+            <div class="brand-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
+              </svg>
+            </div>
+            TRENTINO FORECAST
+          
+        <div class="sidebar-content">
+          </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="top-bar">
+          <div id="leftButtons" class="left-buttons">
+            <button
+              class="toggle-btn"
+              id="btnToggleLeftFilter"
+              onclick="toggleSidebar('leftfilter')"
+              title="Menu Filtri"
+            >
+              <svg class="icon" viewBox="0 0 24 24">
+                <line x1="4" y1="12" x2="20" y2="12"></line>
+                <line x1="4" y1="6" x2="20" y2="6"></line>
+                <line x1="4" y1="18" x2="20" y2="18"></line>
+              </svg>
+            </button>
+            
+            </div>
+          <div class="header-center">TourismForecast</div>
+
+          <div style="display: flex; gap: 10px; align-items: center">
+            <div
+              class="theme-switch"
+              id="themeSwitch"
+              data-mode="light"
+              onclick="toggleTheme()"
+              title="Cambia Tema"
+            >
+              <div class="theme-icon sun">
+                <svg class="icon" style="width: 16px" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              </div>
+              <div class="theme-icon moon">
+                <svg class="icon" style="width: 16px" viewBox="0 0 24 24">
+                  <path
+                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+
+            <button
+              class="toggle-btn"
+              id="btnToggleRight"
+              onclick="toggleSidebar('right')"
+              title="Guida"
+            >
+              <svg class="icon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="content-scrollable">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-title">
+                        <h2 id="chartMainTitle">Seleziona un Ambito</h2>
+                        <p id="chartSubTitle">Filtra per target e periodo</p>
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="mainChart"></canvas>
+                    <div id="chartPlaceholder" class="chart-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                        <p>Analizza i dati storici del Trentino</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mode-controls">
+                <button class="mode-btn active" id="btnHistory" onclick="aggiornaTimeFilter('history')">Storico</button>
+                </div>
+        </div>
+      </main>
+
+      <aside class="sidebar-right collapsed" id="sidebarRight">
+        <div class="resizer resizer-right" id="resizerRight"></div>
+        <div class="sidebar-header" style="justify-content: center">
+          <span class="brand-title" style="color: var(--text-primary)"
+            >GUIDA RAPIDA</span
+          >
+        </div>
+        
+        <div class="info-container">
+          <div class="info-card">
+            <div class="info-title">
+              <div class="info-icon-wrapper">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              How To Use
+            </div>
+            
+            <div class="info-text">
+              Benvenuto nella dashboard del turismo in Trentino.
+              Visualizza gli anni che più ti interessano. 
+              Buon divertimento!!
+            </div>
+
+            <ul class="step-list">
+              <li>
+                <strong>Filtra:</strong> Usa il pannello sinistro per
+                selezionare ambito, tipologia e origine.
+                
+              </li>
+              <li>
+                <strong>Anni:</strong> Seleziona manualmente gli anni 
+                dal 2013 al 2024. Arrivi (numero turisti arrivati) e
+                Presenze (giorni di pernottamento).
+          
+
+              </li>
+              <li>
+                <strong>Modalità:</strong>
+                <div
+                  style="
+                    margin-top: 4px;
+                    padding-left: 8px;
+                    font-size: 0.85rem;
+                    color: var(--text-tertiary);
+                  "
+                >
+                  • Storico: Dati consolidati fino al 2024.<br />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </body>
+  <script src="{{ url_for('static', filename='dati_default.js') }}"></script>
+  <script src="{{ url_for('static', filename='filtra.js') }}"></script>
+  <script src="{{ url_for('static', filename='generazione.js') }}"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script></html>
